@@ -19,6 +19,7 @@ class TeacherAdapter(
 
         fun bind(teacher: TeacherResponse) {
             binding.teacherName.text = teacher.name
+            binding.teacherSubject.text = teacher.last_name
             Glide
                 .with(itemView)
                 .load(teacher.getTeacherImage(teacher.email))

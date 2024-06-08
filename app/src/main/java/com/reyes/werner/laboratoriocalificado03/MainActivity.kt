@@ -8,13 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.reyes.werner.laboratoriocalificado03.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private var listTeacher : List<TeacherResponse> = emptyList()
 
-    private val adapter by lazy { TeacherAdapter(listTeacher) }
+    private lateinit var adapter: TeacherAdapter
 
     private lateinit var binding : ActivityMainBinding
 
@@ -24,7 +26,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.rvTeachers.adapter = adapter
+
+
+        adapter = TeacherAdapter(listOf())
+        val recyclerView = findViewById<RecyclerView>(R.id.rvTeachers)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
         observeValues()
     }
 
@@ -51,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 }
+
 
 
 
