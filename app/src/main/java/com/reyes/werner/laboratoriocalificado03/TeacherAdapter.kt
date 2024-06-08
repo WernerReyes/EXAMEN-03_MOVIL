@@ -22,7 +22,7 @@ class TeacherAdapter(
             binding.teacherSubject.text = teacher.last_name
             Glide
                 .with(itemView)
-                .load(teacher.getTeacherImage(teacher.email))
+                .load(teacher.getTeacherImage(teacher.email, teacher.image_url))
                 .into(binding.teacherImage)
 
             itemView.setOnClickListener {
